@@ -30,7 +30,7 @@
 (with-decorator (kwapply (app.route "/eval") {"methods" ["POST"]})
   (fn [] 
     (let [[repl (MyHyREPL)] [input (request.get_json)]]
-      (foreach [expr (get input "env")]
+      (for [expr (get input "env")]
         (repl.eval expr))
       (json.dumps (repl.eval (get input "code")))
     )))
