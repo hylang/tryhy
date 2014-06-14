@@ -21,13 +21,13 @@
                  
 (def app (Flask __name__))
 
-(with-decorator (kwapply (app.route "/") {"methods" ["GET"]})
+(with-decorator (apply (app.route "/") {"methods" ["GET"]})
   (fn []
-    (kwapply (render_template "index.html")
+    (apply (render_template "index.html")
              {"hy_version" hy.__version__ "server_software" (get os.environ "SERVER_SOFTWARE")})
     ))
 
-(with-decorator (kwapply (app.route "/eval") {"methods" ["POST"]})
+(with-decorator (apply (app.route "/eval") {"methods" ["POST"]})
   (fn [] 
     (let [[repl (MyHyREPL)] [input (request.get_json)]]
       (for [expr (get input "env")]
