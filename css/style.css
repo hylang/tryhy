@@ -1,7 +1,7 @@
 div.console { word-wrap: break-word; }
-div.console { font-size: 14px }
+div.console { font-size: 13px }
 div.console div.jquery-console-inner
-{ width:900px; height:200px; background:#333; padding:0.5em;
+{ width:900px; height:200px; background:#333; padding:1em;
   overflow:auto }
 div.console div.jquery-console-prompt-box
 { color:#fff; font-family:monospace; }
@@ -21,14 +21,20 @@ div.console div.jquery-console-welcome
   padding:0.1em; }
 div.console span.jquery-console-prompt-label { font-weight:bold }
 
-body {
-    background-image: url(/img/symbolics.jpg);
-    background-repeat: no-repeat;
+#terminal {
+    position: relative;
+}
+
+#terminal img {
+    position: absolute;
+    top: 0px;
+    left: 0px;
 }
 
 #hy-console {
-    margin-top: 177px;
-    margin-left: 230px;
+    position: absolute;
+    top: 147px;
+    left: 230px;
     -webkit-transform: skew(4deg) rotate(4deg);
     transform: skew(4deg) rotate(4deg);
 }
@@ -41,8 +47,9 @@ div#hy-console.console div.jquery-console-inner {
 }
 
 #footer {
-    margin-left: 165px;
-    margin-top: 65px;
+    position: absolute;    
+    top: 470px;
+    left: 165px;
     -webkit-transform: skew(4deg) rotate(4deg);
     transform: skew(4deg) rotate(4deg);
     font-family: monospace;
