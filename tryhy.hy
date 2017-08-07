@@ -56,6 +56,6 @@
 		     (setv my-hy-repl (MyHyREPL)
 		           eval-input (request.get_json))
                      (for [expr (get eval-input "env")]
-                          (repl.eval expr))
+                          (my-hy-repl.eval expr))
                      (json.dumps (my-hy-repl.eval (get eval-input "code")))
                   ))
