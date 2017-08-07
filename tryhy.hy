@@ -23,8 +23,11 @@
     <meta property='og:image' content='http://docs.hylang.org/en/latest/_images/hy_logo-smaller.png' />
     <meta property='og:description' content='hylang repl'>
   <body>
-      <div id='hy-console' class='console'></div>
-      <div id='footer'><a href='https://github.com/hylang/tryhy' target='_new'>hylang/tryhy</a></div>
+      <div id='terminal'>
+        <img src='/img/symbolics.jpg'>
+        <div id='hy-console' class='console'></div>
+        <div id='footer'><a href='https://github.com/hylang/tryhy' target='_new'>hylang/tryhy</a></div>
+      </div>
   </body>
 </html>")
 
