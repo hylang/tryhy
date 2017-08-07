@@ -26,7 +26,7 @@
       <div id='terminal'>
         <img src='/img/symbolics.jpg'>
         <div id='hy-console' class='console'></div>
-        <div id='footer'><a href='https://github.com/hylang/tryhy' target='_new'>hylang/tryhy</a></div>
+        <div id='footer'><a href='https://github.com/hylang/hy' target='_new'>hylang/hy</a></div>
       </div>
   </body>
 </html>")
