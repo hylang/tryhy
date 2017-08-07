@@ -1,5 +1,5 @@
 div.console { word-wrap: break-word; }
-div.console { font-size: 14px }
+div.console { font-size: 13px }
 div.console div.jquery-console-inner
 { width:900px; height:200px; background:#333; padding:1em;
   overflow:auto }
