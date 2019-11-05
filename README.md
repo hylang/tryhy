@@ -6,7 +6,12 @@ tryhy
 ## hacking
 ```
 git clone https://github.com/hylang/tryhy.git
-pip install -r tryhy/requirements.txt -t tryhy/lib
-google_appengine/dev_appserver.py tryhy # run locally
-gcloud app deploy tryhy/app.yaml
+cd tryhy
+python3 -m venv env
+env/bin/python -m pip install setuptools pip wheel --upgrade
+env/bin/python -m pip install -r requirements.txt
+# try locally
+FLASK_APP=main.py SERVER_SOFTWARE=dev env/bin/flask run
+# deploy
+gcloud app deploy --no-promote --project try-hy --version $(git rev-parse --short HEAD) .
 ```

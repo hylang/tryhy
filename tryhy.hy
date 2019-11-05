@@ -1,35 +1,35 @@
-(import [os]
-        [json]
-        [sys]
-        [StringIO [StringIO]]
+(import os
+        json
+        sys
+        [io [StringIO]]
         [hy.cmdline [HyREPL]]
-        [hy]
+        hy
         [flask [Flask redirect request render-template-string]])
 
-(setv index-template "<!DOCTYPE html>
+(setv index-template #[[<!DOCTYPE html>
 <html>
   <head>
     <title>try-hylang</title>
-    <meta name='Content-Type' content='text/html; charset=UTF-8'>
-    <script type='text/javascript' src='js/jquery-1.4.2.min.js'></script>
-    <script type='text/javascript' src='js/jquery.console.js'></script>
-    <script type='text/javascript' src='js/repl.js'></script>
-    <script type='text/javascript'>
+    <meta name="Content-Type" content="text/html; charset=UTF-8">
+    <script type="text/javascript" src="{{ url_for('static', filename='jquery-1.4.2.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='jquery.console.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='repl.js') }}"></script>
+    <script type="text/javascript">
       var hy_version = '{{hy_version}}';
       var server_software = '{{server_software}}';
     </script>
-    <link rel='stylesheet' type='text/css' href='css/style.css'>
-    <meta property='og:title' content='try-hylang' />
-    <meta property='og:image' content='http://docs.hylang.org/en/latest/_images/hy_logo-smaller.png' />
-    <meta property='og:description' content='hylang repl'>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <meta property="og:title" content="try-hylang" />
+    <meta property="og:image" content="http://docs.hylang.org/en/latest/_images/hy_logo-smaller.png" />
+    <meta property="og:description" content="hylang repl">
   <body>
-      <div id='terminal'>
-        <img src='/img/symbolics.jpg'>
-        <div id='hy-console' class='console'></div>
-        <div id='footer'><a href='https://github.com/hylang/hy' target='_new'>hylang/hy</a></div>
+      <div id="terminal">
+        <img src="{{ url_for('static', filename='symbolics.jpg') }}">
+        <div id="hy-console" class="console"></div>
+        <div id="footer"><a href='https://github.com/hylang/hy" target="_new">hylang/hy</a></div>
       </div>
   </body>
-</html>")
+</html>]])
 
 (defclass MyHyREPL [HyREPL]
   (defn eval [self code]
@@ -44,8 +44,7 @@
            (setv sys.stderr old-stderr)
            {"stdout" (fake-stdout.getvalue) "stderr" (fake-stderr.getvalue)}))
 
-(setv app (Flask "__main__"))
-(setv app.debug True)
+(setv app (Flask __name__))
 
 (with-decorator (app.route "/")
                   (defn index-page []
